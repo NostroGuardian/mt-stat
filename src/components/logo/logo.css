@@ -1,0 +1,20 @@
+.logo {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding-top: 1.875rem;
+}
+
+.logo__text {
+  color: #ffe288;
+  font-weight: 800;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+}
+
+.logo__version {
+  color: #76736b;
+  font-weight: 500;
+  font-size: 1.25rem;
+}

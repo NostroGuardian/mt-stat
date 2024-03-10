@@ -1,3 +1,17 @@
 :root {
   --black: #000000;
 }
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Inter';
+  background: url('../images/background.png') #0b0a04;
+  background-repeat: no-repeat;
+  background-size: cover contain;
+  background-position: top center;
+}
