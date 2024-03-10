@@ -1,0 +1,30 @@
+{
+  "name": "mt-stat",
+  "version": "1.0.0",
+  "description": "Statistics assistant for World of Tanks",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "live-server": "live-server --browser=chrome",
+    "build": "rollup -c --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NostroGuardian/mt-stat.git"
+  },
+  "keywords": [
+    "worldoftanks"
+  ],
+  "author": "Ivan Nesterov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NostroGuardian/mt-stat/issues"
+  },
+  "homepage": "https://github.com/NostroGuardian/mt-stat#readme",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "eslint": "^8.57.0",
+    "rollup": "^4.12.1",
+    "rollup-plugin-import-css": "^3.5.0"
+  }
+}
