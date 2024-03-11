@@ -1,0 +1,52 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 4rem auto;
+  width: 32.5rem;
+  height: 33.4375rem;
+  padding: 3.75rem 6.25rem;
+  border-radius: 0.9375rem;
+  background: #191811;
+  text-align: center;
+}
+
+.about__info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.about__info-header {
+  color: #716d62;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.about__info-content {
+  color: #d8c791;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.about__copy-content {
+  color: #47463f;
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
+}
+
+.about__button {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 8.75rem;
+  height: 3.125rem;
+  border-radius: 0.9375rem;
+  background: #242218;
+  color: #44423b;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}

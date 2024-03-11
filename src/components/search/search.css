@@ -1,0 +1,27 @@
+.search {
+  position: relative;
+}
+
+.search input {
+  width: 23.75rem;
+  height: 3.125rem;
+  padding: 0 1.25rem;
+  border-radius: 0.9375rem;
+  border: none;
+  background: #242218;
+  color: #514f47;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search input::placeholder {
+  font-size: 1rem;
+  color: #44423b;
+}
+
+.search img {
+  position: absolute;
+  right: 1.25rem;
+  top: 0.8125rem;
+  cursor: pointer;
+}

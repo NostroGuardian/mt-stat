@@ -1,0 +1,19 @@
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 0.625rem;
+  margin-top: 4rem;
+  position: relative; /* REMOVE LATER */
+}
+
+.navigation__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.125rem;
+  height: 3.125rem;
+  border-radius: 0.9375rem;
+  background: #1a1811;
+  border: none;
+  cursor: pointer;
+}

@@ -1,3 +1,4 @@
+import { AboutView } from './views/about/about';
 import { MainView } from './views/main/main';
 
 class App {
@@ -5,6 +6,10 @@ class App {
     {
       path: '',
       view: MainView,
+    },
+    {
+      path: '#about',
+      view: AboutView,
     },
   ];
 
