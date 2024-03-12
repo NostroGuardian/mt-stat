@@ -2,8 +2,9 @@ import { DivComponent } from '../../common/div-component';
 import './stats.css';
 
 export class Stats extends DivComponent {
-  constructor(state) {
+  constructor(appState, state) {
     super();
+    this.appState = appState;
     this.state = state;
   }
 
@@ -109,27 +110,55 @@ export class Stats extends DivComponent {
         <div class="stats__balance">
           <div class="stats__element">
             <div class="stats__title">Дни премиума</div>
-            <div class="stats__content">-</div>
+            <div class="stats__content">${
+              this.appState.isAuthorized
+                ? '<span style="color: #6f1010">Не работает</span>'
+                : '-'
+            }</div>
           </div>
 
           <div class="stats__element">
             <div class="stats__title">Золото</div>
-            <div class="stats__content">-</div>
+            <div class="stats__content">${
+              this.appState.isAuthorized
+                ? new Intl.NumberFormat('ru-RU').format(
+                    this.state.playerData.private.gold
+                  )
+                : '-'
+            }</div>
           </div>
 
           <div class="stats__element">
             <div class="stats__title">Серебро</div>
-            <div class="stats__content">-</div>
+            <div class="stats__content">${
+              this.appState.isAuthorized
+                ? new Intl.NumberFormat('ru-RU').format(
+                    this.state.playerData.private.credits
+                  )
+                : '-'
+            }</div>
           </div>
 
           <div class="stats__element">
             <div class="stats__title">Боны</div>
-            <div class="stats__content">-</div>
+            <div class="stats__content">${
+              this.appState.isAuthorized
+                ? new Intl.NumberFormat('ru-RU').format(
+                    this.state.playerData.private.bonds
+                  )
+                : '-'
+            }</div>
           </div>
 
           <div class="stats__element">
             <div class="stats__title">Свободный опыт</div>
-            <div class="stats__content">-</div>
+            <div class="stats__content">${
+              this.appState.isAuthorized
+                ? new Intl.NumberFormat('ru-RU').format(
+                    this.state.playerData.private.free_xp
+                  )
+                : '-'
+            }</div>
           </div>
         </div>
 
@@ -154,7 +183,11 @@ export class Stats extends DivComponent {
 
             <div class="stats__element">
               <div class="stats__title">Знаки классности «Мастер»</div>
-              <div class="stats__content">-</div>
+              <div class="stats__content">${
+                this.appState.isAuthorized
+                  ? '<span style="color: #6f1010">Не работает</span>'
+                  : '-'
+              }</div>
             </div>
           </div>
 
@@ -194,7 +227,11 @@ export class Stats extends DivComponent {
 
             <div class="stats__element">
               <div class="stats__title">Средний урон</div>
-              <div class="stats__content">-</div>
+              <div class="stats__content">${
+                this.appState.isAuthorized
+                  ? '<span style="color: #6f1010">Не работает</span>'
+                  : '-'
+              }</div>
             </div>
 
             <div class="stats__element">

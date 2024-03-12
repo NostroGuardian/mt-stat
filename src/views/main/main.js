@@ -19,10 +19,12 @@ export class MainView extends AbstractView {
     this.appState = onChange(this.appState, this.appStateHook.bind(this));
     this.state = onChange(this.state, this.stateHook.bind(this));
     this.setTitle('Танковая Статистика');
+    this.checkAuth();
   }
 
   appStateHook(path) {
     if (path === 'isAuthorized') {
+      this.render();
       console.log('isAuthorized');
     }
   }
@@ -64,6 +66,20 @@ export class MainView extends AbstractView {
     return stats.data[player.data[0].account_id];
   }
 
+  async loadPrivateStats(nickname, accessToken) {
+    const res = await fetch(
+      `https://api.tanki.su/wot/account/list/?application_id=ddcd15128e9912b105d51431793ac39b&search=${nickname}`
+    );
+    const player = await res.json();
+
+    const playerData = await fetch(
+      `https://api.tanki.su/wot/account/info/?application_id=ddcd15128e9912b105d51431793ac39b&account_id=${player.data[0].account_id}&access_token=${accessToken}`
+    );
+
+    const stats = await playerData.json();
+    return stats.data[player.data[0].account_id];
+  }
+
   async loadClan(accountId) {
     const res = await fetch(
       `https://api.tanki.su/wot/clans/accountinfo/?application_id=ddcd15128e9912b105d51431793ac39b&account_id=${accountId}`
@@ -73,11 +89,29 @@ export class MainView extends AbstractView {
     return clan.data[accountId];
   }
 
+  async checkAuth() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const nickname = urlParams.get('nickname');
+    const accessToken = urlParams.get('access_token');
+    const accountId2 = urlParams.get('account_id');
+
+    if (accessToken && nickname) {
+      this.state.loading = true;
+      this.appState.isAuthorized = true;
+      const playerData = await this.loadPrivateStats(nickname, accessToken);
+      this.state.playerData = playerData;
+      const playerClan = await this.loadClan(accountId2);
+      this.state.playerClan = playerClan;
+      this.state.loading = false;
+      this.render();
+    }
+  }
+
   render() {
     const main = document.createElement('div');
     main.innerHTML = '';
     main.append(new Navigation(this.appState).render());
-    main.append(new Stats(this.state).render());
+    main.append(new Stats(this.appState, this.state).render());
     this.app.innerHTML = '';
     this.renderLogo();
     this.app.append(main);
