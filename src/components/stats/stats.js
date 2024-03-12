@@ -65,45 +65,53 @@ export class Stats extends DivComponent {
             </div>
           </div>
           <div class="stats__info-wrapper">
+          ${
+            this.state.playerClan === null
+              ? '<div class="stats__no-clan">Нет клана</div>'
+              : `
             <div class="stats__col-50">
-              <div class="stats__element">
-                <div class="stats__title">Клан</div>
-                <div class="stats__content">${
-                  this.state.playerClan.clan.name
-                }</div>
-              </div>
+                <div class="stats__element">
+                    <div class="stats__title">Клан</div>
+                    <div class="stats__content">${
+                      this.state.playerClan.clan.name
+                    }</div>
+                </div>
 
-              <div class="stats__element">
-                <div class="stats__title">Должность</div>
-                <div class="stats__content">${
-                  this.state.playerClan.role_i18n
-                }</div>
+                <div class="stats__element">
+                    <div class="stats__title">Должность</div>
+                    <div class="stats__content">${
+                      this.state.playerClan.role_i18n
+                    }</div>
+                </div>
+                </div>
+
+                <div class="stats__col-50">
+                <div class="stats__element">
+                    <div class="stats__title">Тег</div>
+                    <div class="stats__content">[${
+                      this.state.playerClan.clan.tag
+                    }]</div>
+                </div>
+                <div class="stats__element">
+                    <div class="stats__title">Дней в клане</div>
+                    <div class="stats__content">${new Intl.NumberFormat(
+                      'ru-RU'
+                    ).format(
+                      Math.floor(
+                        (new Date().getTime() -
+                          new Date(
+                            this.state.playerClan.joined_at * 1000
+                          ).getTime()) /
+                          (1000 * 60 * 60 * 24)
+                      )
+                    )}</div>
               </div>
             </div>
+          `
+          }
+            
 
-            <div class="stats__col-50">
-              <div class="stats__element">
-                <div class="stats__title">Тег</div>
-                <div class="stats__content">[${
-                  this.state.playerClan.clan.tag
-                }]</div>
-              </div>
-
-              <div class="stats__element">
-                <div class="stats__title">Дней в клане</div>
-                <div class="stats__content">${new Intl.NumberFormat(
-                  'ru-RU'
-                ).format(
-                  Math.floor(
-                    (new Date().getTime() -
-                      new Date(
-                        this.state.playerClan.joined_at * 1000
-                      ).getTime()) /
-                      (1000 * 60 * 60 * 24)
-                  )
-                )}</div>
-              </div>
-            </div>
+    
           </div>
         </div>
 
