@@ -124,7 +124,7 @@ export class MainView extends AbstractView {
   }
 
   renderSearch() {
-    const search = new Search(this.state).render();
+    const search = new Search(this.appState, this.state).render();
     const nav = document.getElementById('search');
     nav.append(search);
   }

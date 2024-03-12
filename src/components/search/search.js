@@ -2,8 +2,9 @@ import { DivComponent } from '../../common/div-component';
 import './search.css';
 
 export class Search extends DivComponent {
-  constructor(state) {
+  constructor(appState, state) {
     super();
+    this.appState = appState;
     this.state = state;
   }
 
@@ -24,6 +25,7 @@ export class Search extends DivComponent {
 
     this.el.querySelector('input').addEventListener('keydown', (e) => {
       if (e.code === 'Enter') {
+        this.appState.isAuthorized = false;
         this.search();
       }
     });
